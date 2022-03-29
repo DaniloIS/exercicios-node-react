@@ -1,13 +1,17 @@
-import prismaClient from '../prisma';
+const prismaClient = require('../prisma');
 
-class Users {
-    async execute(data) {
-        const { name, email, password } = data;
+module.exports = {
+    async insert(users) {
+        const { name, email, password } = users;
         const user = await prismaClient.users.create({
-        
+            data: {
+                name,
+                email,
+                password
+            }
         })
+
+        return user
 
     }
 }
-
-export { Users }

@@ -1,8 +1,8 @@
-class UserController {
-    async handle(req, res) {
-        const { name, email, password } = req.body
-        console.log({ name, email, password })
+const UserController =  require('../services/UserServices');
+
+module.exports = {
+    async create(req, res) {
+        const user = req.body
+        UserController.insert(user)
     }
 }
-
-module.exports = UserController
